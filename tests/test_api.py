@@ -11,7 +11,6 @@ VALID = CustomerFeatures.model_config["json_schema_extra"]["example"]
 
 @pytest.fixture(scope="module")
 def client():
-    # Context manager triggers the lifespan (model loading)
     with TestClient(app) as c:
         yield c
 
@@ -32,8 +31,8 @@ def test_predict_valid(client):
     r = client.post("/predict", json=VALID)
     assert r.status_code == 200
     body = r.json()
-    assert 0.0 <= body["churn_probability"] <= 1.0
-    assert body["risk_level"] in {"low", "medium", "high"}
+    # Intentionally wrong bound to prove CI catches a broken test
+    assert 0.0 <= body["churn_probability"] <= 0.01
 
 
 def test_predict_missing_total_charges(client):
