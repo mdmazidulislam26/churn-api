@@ -32,7 +32,7 @@ def test_predict_valid(client):
     assert r.status_code == 200
     body = r.json()
     # Intentionally wrong bound to prove CI catches a broken test
-    assert 0.0 <= body["churn_probability"] <= 0.01
+    assert 0.0 <= body["churn_probability"] <= 1.0
 
 
 def test_predict_missing_total_charges(client):
