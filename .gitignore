@@ -1,0 +1,9 @@
+data/
+mlruns/
+mlflow.db
+server.log
+tests/__pycache__/
+__pycache__/
+*.pyc
+.dvc/
+.dvcignore
