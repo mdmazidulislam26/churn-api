@@ -2,7 +2,9 @@ data/
 mlruns/
 mlflow.db
 server.log
-tests/__pycache__/
+tests/
+train.py
+train_mlflow.py
 __pycache__/
 *.pyc
 .dvc/
