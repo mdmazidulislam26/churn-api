@@ -1,5 +1,5 @@
 # ---- Stage 1: builder — installs dependencies into an isolated venv ----
-FROM python:3.11-slim AS builder
+FROM python:3.13-slim AS builder
 WORKDIR /build
 
 RUN python -m venv /opt/venv
@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # ---- Stage 2: runtime — only the venv + app code, no build tools ----
-FROM python:3.11-slim
+FROM python:3.13-slim
 WORKDIR /app
 
 # Dedicated non-root user; never run the app as root
